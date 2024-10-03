@@ -1,11 +1,12 @@
-import students from "./students.mjs";
 import { displayStudents } from "./studentDisplay.mjs";
 
-document
-  .getElementById("filter-low-marks")
-  .addEventListener("click", filterStudents);
+export function setupLowMark(students) {
+  document
+    .getElementById("filter-low-marks")
+    .addEventListener("click", () => filterStudents(students));
+}
 
-function filterStudents() {
+const filterStudents = (students) => {
   const filteredStudents = students.filter((student) =>
     student.marks.some((mark) => mark < 5)
   );
@@ -19,4 +20,4 @@ function filterStudents() {
   });
 
   displayStudents(studentsWithClass);
-}
+};
